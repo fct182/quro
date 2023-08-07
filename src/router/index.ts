@@ -27,14 +27,25 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    // 动态磨砂背景---2
+    // 静态磨砂背景
     path: "/frostedBackground2",
     name: "FrostedBackground2",
     component: () =>
       import("../views/FrostedBackground/FrostedBackground2.vue"),
     meta: {
-      text: "动态磨砂背景2", // 菜单名
+      text: "静态磨砂背景", // 菜单名
       icon: "Platform", // 菜单图标
+    },
+  },
+  {
+    // 动态文字输入效果
+    path: "/dynamicTextInput",
+    name: "DynamicTextInput",
+    component: () =>
+      import("../views/DynamicTextInput/DynamicTextInputDemo.vue"),
+    meta: {
+      text: "动态文字输入效果", // 菜单名
+      icon: "EditPen", // 菜单图标
     },
   },
 ];
