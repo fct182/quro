@@ -1,5 +1,6 @@
 # quro
 
+Quro 是Vue3组件库
 ## Project setup
 ```
 npm install

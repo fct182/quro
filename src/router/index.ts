@@ -1,20 +1,41 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/Home/HomePage.vue";
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    redirect: "/home",
+    // redirect: { name: 'Home' }
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/home",
+    name: "Home",
+    component: HomeView,
+    meta: {
+      text: "首页", // 菜单名
+      icon: "Discount", // 菜单图标
+    },
+  },
+  {
+    // 动态磨砂背景
+    path: "/frostedBackground",
+    name: "FrostedBackground",
+    component: () => import("../views/FrostedBackground/FrostedBackground.vue"),
+    meta: {
+      text: "动态磨砂背景", // 菜单名
+      icon: "Platform", // 菜单图标
+    },
+  },
+  {
+    // 动态磨砂背景---2
+    path: "/frostedBackground2",
+    name: "FrostedBackground2",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+      import("../views/FrostedBackground/FrostedBackground2.vue"),
+    meta: {
+      text: "动态磨砂背景2", // 菜单名
+      icon: "Platform", // 菜单图标
+    },
   },
 ];
 
