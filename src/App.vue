@@ -52,6 +52,9 @@ $header-layout: 56px;
         margin: 12px;
         background-color: #fff;
         flex: 1;
+        flex-basis: auto;
+        overflow: auto;
+        box-sizing: border-box;
       }
     }
   }
