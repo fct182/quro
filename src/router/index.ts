@@ -48,6 +48,15 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "EditPen", // 菜单图标
     },
   },
+  {
+    path: "/scrollStyle",
+    name: "scrollStyle",
+    component: () => import("../views/ScrollStyle/ScrollStyleDemo.vue"),
+    meta: {
+      text: "自定义滚动条样式", // 菜单名
+      icon: "DCaret", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({
