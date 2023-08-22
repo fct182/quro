@@ -57,6 +57,15 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "DCaret", // 菜单图标
     },
   },
+  {
+    path: "/waterfallFlow",
+    name: "waterfallFlow",
+    component: () => import("../views/WaterfallFlow/WaterfallFlowView.vue"),
+    meta: {
+      text: "瀑布流", // 菜单名
+      icon: "DCaret", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({

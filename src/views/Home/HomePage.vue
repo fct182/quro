@@ -7,10 +7,15 @@
     <h3>首页</h3>
     <p>本项目介绍:</p>
     <span>Quro 收集有趣的组件。</span>
+    <div class="box">
+      <quro-carousel></quro-carousel>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import QuroCarousel from "@/components/Carousel/QuroCarousel.vue";
+</script>
 
 <style lang="scss" scoped>
 .home-welcome {
@@ -23,6 +28,10 @@
   span {
     color: #4e596a;
     font-size: 13px;
+  }
+  .box {
+    width: 1100px;
+    margin: 10px auto;
   }
 }
 </style>
