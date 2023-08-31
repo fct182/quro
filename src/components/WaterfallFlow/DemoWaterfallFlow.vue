@@ -1,5 +1,5 @@
 <!--
- * 瀑布流初尝试
+ * 瀑布流初尝试---absolute方式
  * @Author:付常涛
  * @Date: 2023/08/16 17:20:38
 -->
@@ -35,6 +35,7 @@
                 width: `${props.itemWidth}px`,
                 height: `${item.height}px`,
               }"
+              loading="lazy"
               :src="item.src"
             />
           </div>
