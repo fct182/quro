@@ -90,7 +90,6 @@ randomPolygon();
 
 /**
  * 点击更新背景颜色
- * @Author:付常涛
  * @Date: 2023/08/03 20:36:53
  */
 function updateBg() {
@@ -104,7 +103,6 @@ function updateBg() {
 
 /**
  * 随机生成多边形块
- * @Author:付常涛
  * @Date: 2023/08/03 16:42:34
  */
 function randomPolygon() {
@@ -165,7 +163,6 @@ function randBetween(start: number, end: number, unit?: string) {
 
 /**
  * 从给定列表中随机选择一个值。
- * @Author:付常涛
  * @Date: 2023/08/03 16:59:19
  * @param data  列表
  */

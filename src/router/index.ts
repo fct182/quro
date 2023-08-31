@@ -75,6 +75,15 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "DCaret", // 菜单图标
     },
   },
+  {
+    path: "/avatarHover",
+    name: "AvatarHoverView",
+    component: () => import("../views/AvatarHoverView/AvatarHoverView.vue"),
+    meta: {
+      text: "头像hover效果", // 菜单名
+      icon: "Avatar", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({

@@ -1,6 +1,5 @@
 <!--
  * 瀑布流---flex盒子
- * @Author:付常涛
  * @Date: 2023/08/11 17:45:02
 -->
 <template>
@@ -31,7 +30,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
-import axios from "axios";
+// import axios from "axios";
 
 const reachBottomDistance = 50; // 判断触底的变量
 
@@ -104,7 +103,6 @@ function dealImgList() {
 
 /**
  * 滚动事件
- * @Author:付常涛
  * @Date: 2023/08/28 17:52:36
  */
 function scrollHandler(e: any) {
