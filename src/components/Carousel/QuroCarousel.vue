@@ -102,7 +102,7 @@ function action() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .quro-carousel--horizontal {
   overflow-x: hidden;
 }

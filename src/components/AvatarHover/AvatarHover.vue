@@ -4,7 +4,7 @@
 -->
 <template>
   <div
-    class="avatar-hover"
+    class="quro-avatar-hover"
     :style="{
       '--img-width': imgWidthComp /* 图片img宽度 */,
       '--border-width': imgBorderWidthComp /* 图片边框宽度 */,
@@ -13,7 +13,7 @@
       '--scale-hover': props.imgMagnification /* 图片hover时scale倍数 */,
     }"
   >
-    <img class="avatar-img" :src="props.url" :alt="props.alt" />
+    <img class="quro-avatar-img" :src="props.url" :alt="props.alt" />
   </div>
 </template>
 
@@ -53,10 +53,10 @@ const imgBorderWidthComp = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.avatar-hover {
+<style lang="scss">
+.quro-avatar-hover {
   padding: 0 calc(var(--img-width) / 5) calc(var(--img-width) / 5);
-  .avatar-img {
+  .quro-avatar-img {
     --magnification: 1; /* 放大倍率 */
     --outline-offset: calc(
       var(--img-width) * (1 / var(--magnification) - 1) / 2 -
@@ -96,7 +96,7 @@ const imgBorderWidthComp = computed(() => {
       radial-gradient(circle closest-side, #000 99%, transparent)
         var(--background-img-option);
   }
-  .avatar-img:hover {
+  .quro-avatar-img:hover {
     --magnification: var(--scale-hover);
   }
 }

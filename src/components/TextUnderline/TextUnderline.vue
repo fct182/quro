@@ -1,12 +1,12 @@
 <template>
   <div
-    class="text-underline-hover"
+    class="quro-text-underline-hover"
     :style="{
       '--linear-gradient-color': linearGradientColorComp,
       '--underline-height': underlineHeight,
     }"
   >
-    <div class="underline-content">
+    <div class="quro-underline-content">
       <slot :text="props.text">{{ props.text }}</slot>
     </div>
   </div>
@@ -40,10 +40,10 @@ const underlineHeight = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.text-underline-hover {
+<style lang="scss">
+.quro-text-underline-hover {
   color: #303133;
-  .underline-content {
+  .quro-underline-content {
     display: inline-flex;
     justify-content: center;
     align-items: center;

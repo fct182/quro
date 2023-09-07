@@ -73,7 +73,7 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/WaterfallFlow/WaterfallFlowView.vue"),
     meta: {
       text: "瀑布流-absolute", // 菜单名
-      icon: "DCaret", // 菜单图标
+      icon: "Pouring", // 菜单图标
     },
   },
   {
@@ -82,7 +82,7 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/WaterfallFlow/WaterfallFlowView1.vue"),
     meta: {
       text: "瀑布流-flex", // 菜单名
-      icon: "DCaret", // 菜单图标
+      icon: "Pouring", // 菜单图标
     },
   },
   {

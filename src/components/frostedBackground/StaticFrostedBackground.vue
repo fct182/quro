@@ -4,16 +4,16 @@
 -->
 <template>
   <div
-    class="static-frosted-background"
+    class="quro-static-frosted-background"
     :style="{ '--blurVal': filterBlurComp }"
   >
     <div
-      class="static-polygon"
+      class="quro-static-polygon"
       v-for="(item, index) in props.polygonConfig"
       :key="index"
       :style="{ ...item }"
     ></div>
-    <div class="content">
+    <div class="quro-content">
       <slot></slot>
     </div>
   </div>
@@ -78,14 +78,14 @@ const filterBlurComp = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.static-frosted-background {
+<style lang="scss">
+.quro-static-frosted-background {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 
-  & > .static-polygon {
+  & > .quro-static-polygon {
     position: absolute;
     opacity: 0.5;
     transform: translate(-50%, 0);
@@ -101,7 +101,7 @@ const filterBlurComp = computed(() => {
     backdrop-filter: blur(var(--blurVal));
     z-index: 1;
   }
-  .content {
+  .quro-content {
     position: absolute;
     z-index: 1;
   }

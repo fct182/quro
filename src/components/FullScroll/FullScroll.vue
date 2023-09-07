@@ -1,11 +1,11 @@
 <template>
   <!-- 整页滚动可见视图容器(宽:视口宽, 高:视口高) -->
-  <div class="fullpage-visible-view" ref="fullPage">
+  <div class="quro-fullpage-visible-view" ref="fullPage">
     <!-- 滚动容器(宽:视口宽, 高:滚动容器中的元素个数 * 视口高) -->
     <div
       ref="scrollConcentRef"
-      :class="{ 'disable-transition': isCloseTranstion }"
-      class="scroll-concent"
+      :class="{ 'quro-disable-transition': isCloseTranstion }"
+      class="quro-scroll-concent"
       @mousewheel="mousewheel"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
@@ -19,47 +19,51 @@
           backgroundImage: `url(${item.backgroundImage})`,
           height: windowHeight + 'px',
         }"
-        class="scroll-concent-item"
+        class="quro-scroll-concent-item"
       >
         <slot :item="item"></slot>
       </div>
     </div>
     <!-- 底部指示器 -->
     <div
-      class="mobile-bottom-guide"
-      :class="{ 'guide-hidden': $index === 0 }"
+      class="quro-mobile-bottom-guide"
+      :class="{ 'quro-guide-hidden': $index === 0 }"
       v-if="isMobile()"
     >
-      <ul class="mobile-guide" :class="{ 'guide-active': $index !== 0 }">
+      <ul class="quro-mobile-guide">
         <li
-          class="mobile-guide-item"
-          :class="{ 'mobile-guide-item-active': index === $index }"
+          class="quro-mobile-guide-item"
+          :class="{ 'quro-mobile-guide-item-active': index === $index }"
           v-for="(item, index) in props.list"
           :key="index"
           @click="clickGuide(index)"
         >
           <div
-            class="mobile-guide-icon"
-            :class="{ 'mobile-guide-icon-active': index === $index }"
+            class="quro-mobile-guide-icon"
+            :class="{ 'quro-mobile-guide-icon-active': index === $index }"
           ></div>
           <p>{{ item.guideTitle }}</p>
         </li>
       </ul>
     </div>
     <!-- 右侧指示器 -->
-    <ul v-else class="guide" :class="{ 'guide-active': $index !== 0 }">
-      <div class="guide-vertical-line"></div>
+    <ul
+      v-else
+      class="quro-guide"
+      :class="{ 'quro-guide-active': $index !== 0 }"
+    >
+      <div class="quro-guide-vertical-line"></div>
       <li
-        class="guide-item"
-        :class="{ 'guide-item-active': index === $index }"
+        class="quro-guide-item"
+        :class="{ 'quro-guide-item-active': index === $index }"
         v-for="(item, index) in props.list"
         :key="index"
         @click="clickGuide(index)"
       >
         <p>{{ item.guideTitle }}</p>
         <div
-          class="guide-icon"
-          :class="{ 'guide-icon-active': index === $index }"
+          class="quro-guide-icon"
+          :class="{ 'quro-guide-icon-active': index === $index }"
         ></div>
       </li>
     </ul>
@@ -266,24 +270,24 @@ function isMobile() {
 }
 </script>
 
-<style lang="scss" scoped>
-.fullpage-visible-view {
+<style lang="scss">
+.quro-fullpage-visible-view {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
 
-  .scroll-concent {
+  .quro-scroll-concent {
     position: absolute;
     width: 100%;
     transition: top ease-in-out 0.5s;
-    .scroll-concent-item {
+    .quro-scroll-concent-item {
       background-size: cover !important;
       background-position: center;
       background-repeat: no-repeat;
     }
   }
-  .disable-transition {
+  .quro-disable-transition {
     /* 关闭动画 */
     transition: none;
   }
@@ -292,7 +296,7 @@ function isMobile() {
     list-style: none;
   }
 
-  .guide {
+  .quro-guide {
     position: fixed;
     z-index: 2;
     top: 50%;
@@ -305,11 +309,11 @@ function isMobile() {
     user-select: none;
     opacity: 0;
     transition: all 0.5s ease-out;
-    &.guide-active {
+    &.quro-guide-active {
       transform: translate(0, -50%) scale(0.8);
       opacity: 1;
     }
-    .guide-vertical-line {
+    .quro-guide-vertical-line {
       position: absolute;
       top: -40px;
       right: 8px;
@@ -335,13 +339,13 @@ function isMobile() {
         transform: rotateX(180deg);
       }
     }
-    .guide-item {
+    .quro-guide-item {
       position: relative;
       display: flex;
       align-items: center;
       margin-bottom: 20px;
       cursor: pointer;
-      &.guide-item-active {
+      &.quro-guide-item-active {
         p {
           background: #fff;
           color: #283849;
@@ -357,7 +361,7 @@ function isMobile() {
         padding: 0 12px;
         margin-right: 10px;
       }
-      .guide-icon {
+      .quro-guide-icon {
         width: 18px;
         height: 18px;
         background: #fff;
@@ -365,7 +369,7 @@ function isMobile() {
         transform-origin: 50%;
         transition: all 0.4s ease;
       }
-      .guide-icon-active {
+      .quro-guide-icon-active {
         background: rgba(18, 51, 77, 0.4);
         border: #fff 1px solid;
         padding: 4px;
@@ -381,7 +385,7 @@ function isMobile() {
       }
     }
   }
-  .mobile-bottom-guide {
+  .quro-mobile-bottom-guide {
     position: fixed;
     bottom: 25px;
     left: 0;
@@ -397,22 +401,22 @@ function isMobile() {
       height: 1px;
       background: rgba(255, 255, 255, 0.2);
     }
-    &.guide-hidden {
+    &.quro-guide-hidden {
       display: none;
     }
-    .mobile-guide {
+    .quro-mobile-guide {
       display: flex;
       justify-content: space-around;
       // align-items: center;
       user-select: none;
       height: 100%;
-      .mobile-guide-item {
-        &.mobile-guide-item-active {
+      .quro-mobile-guide-item {
+        &.quro-mobile-guide-item-active {
           p {
             font-weight: bold;
           }
         }
-        .mobile-guide-icon {
+        .quro-mobile-guide-icon {
           margin: 0 auto;
           width: 15px;
           height: 15px;
@@ -429,7 +433,7 @@ function isMobile() {
             opacity: 0;
             transition: opacity 0s 0.4s ease;
           }
-          &.mobile-guide-icon-active {
+          &.quro-mobile-guide-icon-active {
             background: rgba(18, 51, 77, 0.4);
             border: #fff 1px solid;
             padding: 3px;

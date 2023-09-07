@@ -3,25 +3,25 @@
  * @Date: 2023/08/02 17:43:51
 -->
 <template>
-  <div @click.stop="updateBg" class="dynamic-frosted-background">
+  <div @click.stop="updateBg" class="quro-dynamic-frosted-background">
     <!-- 背景磨砂块 -->
     <div
-      class="background-content"
+      class="quro-background-content"
       :style="{ filter: `blur(${filterBlurComp})` }"
     >
       <!-- 背景多边形 -->
-      <div class="container">
+      <div class="quro-container">
         <div
-          class="cell-polygon"
+          class="quro-cell-polygon"
           v-for="(item, index) in polygonConfig"
           :key="index"
         >
-          <div :style="{ ...item }" class="polygon"></div>
+          <div :style="{ ...item }" class="quro-polygon"></div>
         </div>
       </div>
     </div>
     <!-- 用户自定义内容 -->
-    <div class="main-content">
+    <div class="quro-main-content">
       <slot></slot>
     </div>
   </div>
@@ -173,7 +173,7 @@ function pick(data: string[]) {
 </script>
 
 <style lang="scss">
-.dynamic-frosted-background {
+.quro-dynamic-frosted-background {
   position: relative;
   width: 100%;
   height: 100%;
@@ -185,21 +185,21 @@ function pick(data: string[]) {
       filter: hue-rotate(360deg);
     }
   }
-  .background-content {
+  .quro-background-content {
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    .container {
+    .quro-container {
       position: relative;
       width: 100%;
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      .cell-polygon {
+      .quro-cell-polygon {
         position: relative;
-        .polygon {
+        .quro-polygon {
           position: absolute;
           transform: translate(-50%, 0);
           opacity: 0.5;
@@ -207,7 +207,7 @@ function pick(data: string[]) {
       }
     }
   }
-  .main-content {
+  .quro-main-content {
     position: absolute;
   }
 }

@@ -4,14 +4,14 @@
 -->
 <template>
   <div
-    class="dynamic-text-input"
+    class="quro-dynamic-text-input"
     :style="{
       'background-image': props.bgUrl ? `url(${props.bgUrl})` : '',
       '--content-height': `${props.height}px`,
     }"
   >
     <div
-      class="text"
+      class="quro-dynamic-text"
       :style="{
         '--text-color': props.color,
         '--text-width': textWidth,
@@ -45,8 +45,8 @@ const textWidth = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.dynamic-text-input {
+<style lang="scss">
+.quro-dynamic-text-input {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ const textWidth = computed(() => {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  .text {
+  .quro-dynamic-text {
     color: var(--text-color);
     font: 200% monospace;
     border-right: 0.1em solid;
