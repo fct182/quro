@@ -259,7 +259,6 @@ function clickGuide(index: number) {
 }
 /**
  * 检验是否为移动设备
- * @Author:付常涛
  * @Date: 2023/09/07 15:19:28
  */
 function isMobile() {

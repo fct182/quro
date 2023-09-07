@@ -57,7 +57,6 @@ function getMenuAside(data: Array<RouteRecordRaw>) {
 }
 /**
  * 菜单项点击事件
- * @Author:付常涛
  * @Date: 2023/09/05 20:51:54
  * @param path  路由路径
  * @param openWindow  是否打开新窗口加载
@@ -70,6 +69,7 @@ function menuClickHandler(path: string, openWindow: boolean) {
     });
     // 打开新窗口
     const newWindow = window.open(routeObj.href, "_blank");
+    // 路由回退
     newWindow!.onload = () => router.back();
   }
 }

@@ -27,6 +27,10 @@ import { computed } from "vue";
 
 const route = useRoute();
 
+/**
+ * 是否全屏查看组件示例
+ * @Date: 2023/09/07 17:31:18
+ */
 const isFullScree = computed(() => {
   if (route.meta.openWindow) {
     return false;
