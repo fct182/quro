@@ -49,6 +49,16 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    // 文字悬浮动态下划线效果
+    path: "/textUnderline",
+    name: "TextUnderline",
+    component: () => import("../views/TextUnderlineView/TextUnderlineView.vue"),
+    meta: {
+      text: "文字悬浮动态下划线", // 菜单名
+      icon: "Edit", // 菜单图标
+    },
+  },
+  {
     path: "/scrollStyle",
     name: "scrollStyle",
     component: () => import("../views/ScrollStyle/ScrollStyleDemo.vue"),
@@ -82,6 +92,16 @@ export const routes: Array<RouteRecordRaw> = [
     meta: {
       text: "头像hover效果", // 菜单名
       icon: "Avatar", // 菜单图标
+    },
+  },
+  {
+    path: "/fullScroll",
+    name: "FullScroll",
+    component: () => import("../views/FullScrollView/FullScrollView.vue"),
+    meta: {
+      openWindow: true, // 新窗口打开
+      text: "整页滚动效果", // 菜单名
+      icon: "Guide", // 菜单图标
     },
   },
 ];

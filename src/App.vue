@@ -1,5 +1,5 @@
 <template>
-  <el-container class="app-layout">
+  <el-container v-if="isFullScree" class="app-layout">
     <el-header class="header-layout">
       <base-header></base-header>
     </el-header>
@@ -16,11 +16,23 @@
       </el-main>
     </el-container>
   </el-container>
+  <router-view v-else></router-view>
 </template>
 
 <script setup lang="ts">
 import BaseHeader from "@/components/layout/BaseHeader.vue";
 import BaseAside from "@/components/layout/BaseAside.vue";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+
+const route = useRoute();
+
+const isFullScree = computed(() => {
+  if (route.meta.openWindow) {
+    return false;
+  }
+  return true;
+});
 </script>
 
 <style lang="scss" scoped>
