@@ -104,6 +104,15 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "Guide", // 菜单图标
     },
   },
+  {
+    path: "/treeNode",
+    name: "TreeNode",
+    component: () => import("../views/RuleTreeView/RuleTreeView.vue"),
+    meta: {
+      text: "树形结构规则关系", // 菜单名
+      icon: "Connection", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({
