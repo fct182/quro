@@ -113,6 +113,15 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "Connection", // 菜单图标
     },
   },
+  {
+    path: "/clock",
+    name: "Clock",
+    component: () => import("../views/ClockView/ClockView.vue"),
+    meta: {
+      text: "简单时钟", // 菜单名
+      icon: "Picture", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({

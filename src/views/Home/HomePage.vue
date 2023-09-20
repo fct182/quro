@@ -7,6 +7,7 @@
     <h3>首页</h3>
     <p>本项目介绍:</p>
     <span>Quro 收集有趣的组件。</span>
+    <h2>走马灯示例:</h2>
     <div class="box">
       <quro-carousel></quro-carousel>
     </div>
@@ -32,6 +33,9 @@ import QuroCarousel from "@/components/Carousel/QuroCarousel.vue";
   .box {
     width: 1100px;
     margin: 10px auto;
+  }
+  h2 {
+    margin: 14px 0;
   }
 }
 </style>
