@@ -30,6 +30,10 @@
       <p>{{ state.seconds }}</p>
       <span>seconds</span>
     </div>
+    <div class="quro-clock-date">
+      <span>{{ state.timeStr.slice(0, 10) }}</span>
+      <span class="week-day">{{ state.weekDay }}</span>
+    </div>
   </div>
 </template>
 
@@ -44,6 +48,7 @@ interface State {
   year: string;
   month: string;
   date: string;
+  weekDay: string;
   timeStr: string; // 时间字符串 yyyy-mm-dd HH:mm:ss
 }
 
@@ -76,6 +81,16 @@ const cardBorderComp = computed(() => {
     : `${props.cardBorder}px`;
 });
 
+const weekDay = [
+  "星期天",
+  "星期一",
+  "星期二",
+  "星期三",
+  "星期四",
+  "星期五",
+  "星期六",
+];
+
 const state = reactive<State>({
   hours: "00",
   minutes: "00",
@@ -83,6 +98,7 @@ const state = reactive<State>({
   year: "00",
   month: "00",
   date: "00",
+  weekDay: "",
   timeStr: "",
 });
 
@@ -101,6 +117,7 @@ function getTime() {
   state.year = date.getFullYear().toString();
   state.month = String(date.getMonth() + 1).padStart(2, "0");
   state.date = String(date.getDate()).padStart(2, "0");
+  state.weekDay = weekDay[date.getDay()];
   state.timeStr = `${state.year}-${state.month}-${state.date} ${state.hours}:${state.minutes}:${state.seconds}`;
 }
 
@@ -149,6 +166,9 @@ function copyCurrentTime() {
       .quro-clock-bg {
         filter: blur(3px);
       }
+    }
+    .quro-clock-date {
+      opacity: 1;
     }
   }
   .quro-clock-cover {
@@ -206,10 +226,17 @@ function copyCurrentTime() {
   }
   .quro-clock-date {
     position: absolute;
-    bottom: 10px;
+    bottom: 2%;
     z-index: 2;
     color: #fff;
-    font-size: 22px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 18px;
+    transition: opacity 1s ease;
+    opacity: 0;
+    .week-day {
+      margin-left: 12px;
+    }
   }
   @keyframes clockanm {
     0% {
