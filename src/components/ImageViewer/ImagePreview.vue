@@ -1,67 +1,76 @@
+<!--
+ * 图片预览组件--(测试版)
+ * @Date: 2023/09/22 17:13:58
+-->
 <template>
-  <div
-    tabindex="-1"
-    ref="wrapperRef"
-    class="quro-image-viewer__wrapper"
-    :style="{ 'z-index': viewerZIndex }"
-  >
-    <!-- 遮罩 -->
-    <div class="quro-image-viewer__mask" @click.self="handleMaskClick"></div>
-    <!-- 关闭按钮 -->
-    <span class="quro-image-viewer__btn quro-image-viewer__close" @click="hide">
-      <el-icon><CloseBold /></el-icon>
-    </span>
-    <template v-if="!isSingle">
-      <!-- 上一张图片 -->
+  <Transition appear name="viewer-fade">
+    <div
+      tabindex="-1"
+      ref="wrapperRef"
+      class="quro-image-viewer__wrapper"
+      :style="{ 'z-index': viewerZIndex }"
+    >
+      <!-- 遮罩 -->
+      <div class="quro-image-viewer__mask" @click.self="handleMaskClick"></div>
+      <!-- 关闭按钮 -->
       <span
-        class="quro-image-viewer__btn quro-image-viewer__prev"
-        :class="{ 'is-disabled': !props.infinite && isFirst }"
-        @click="prev"
+        class="quro-image-viewer__btn quro-image-viewer__close"
+        @click="hide"
       >
-        <el-icon><ArrowLeftBold /></el-icon>
+        <el-icon><CloseBold /></el-icon>
       </span>
-      <!-- 下一张图片 -->
-      <span
-        class="quro-image-viewer__btn quro-image-viewer__next"
-        :class="{ 'is-disabled': !props.infinite && isLast }"
-        @click="next"
-      >
-        <el-icon><ArrowRightBold /></el-icon>
-      </span>
-    </template>
-    <!-- (ACTIONS)图片缩放、mode状态、旋转操作 -->
-    <div class="quro-image-viewer__btn quro-image-viewer__actions">
-      <div class="quro-image-viewer__actions__inner">
-        <el-icon @click="handleActions('zoomOut')"><ZoomOut /></el-icon>
-        <el-icon @click="handleActions('zoomIn')"><ZoomIn /></el-icon>
-        <el-icon @click="toggleMode">
-          <component :is="imgState.mode"></component>
-        </el-icon>
-        <el-icon @click="handleActions('anticlocelise')">
-          <RefreshLeft />
-        </el-icon>
-        <el-icon @click="handleActions('clocelise')">
-          <RefreshRight />
-        </el-icon>
+      <template v-if="!isSingle">
+        <!-- 上一张图片 -->
+        <span
+          class="quro-image-viewer__btn quro-image-viewer__prev"
+          :class="{ 'is-disabled': !props.infinite && isFirst }"
+          @click="prev"
+        >
+          <el-icon><ArrowLeftBold /></el-icon>
+        </span>
+        <!-- 下一张图片 -->
+        <span
+          class="quro-image-viewer__btn quro-image-viewer__next"
+          :class="{ 'is-disabled': !props.infinite && isLast }"
+          @click="next"
+        >
+          <el-icon><ArrowRightBold /></el-icon>
+        </span>
+      </template>
+      <!-- (ACTIONS)图片缩放、mode状态、旋转操作 -->
+      <div class="quro-image-viewer__btn quro-image-viewer__actions">
+        <div class="quro-image-viewer__actions__inner">
+          <el-icon @click="handleActions('zoomOut')"><ZoomOut /></el-icon>
+          <el-icon @click="handleActions('zoomIn')"><ZoomIn /></el-icon>
+          <el-icon @click="toggleMode">
+            <component :is="imgState.mode"></component>
+          </el-icon>
+          <el-icon @click="handleActions('anticlocelise')">
+            <RefreshLeft />
+          </el-icon>
+          <el-icon @click="handleActions('clocelise')">
+            <RefreshRight />
+          </el-icon>
+        </div>
+      </div>
+      <!-- CANVAS -->
+      <div class="quro-image-viewer__canvas">
+        <template v-for="(url, i) in props.urlList">
+          <img
+            v-if="i === imgState.index"
+            ref="imgRef"
+            class="quro-image-viewer__img"
+            :key="url"
+            :src="currentImg"
+            :style="imgStyle"
+            @load="handleImgLoad"
+            @error="handleImgError"
+            @mousedown="handleMouseDown"
+          />
+        </template>
       </div>
     </div>
-    <!-- CANVAS -->
-    <div class="quro-image-viewer__canvas">
-      <template v-for="(url, i) in props.urlList">
-        <img
-          v-if="i === imgState.index"
-          ref="imgRef"
-          class="quro-image-viewer__img"
-          :key="url"
-          :src="currentImg"
-          :style="imgStyle"
-          @load="handleImgLoad"
-          @error="handleImgError"
-          @mousedown="handleMouseDown"
-        />
-      </template>
-    </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -124,7 +133,7 @@ let prevOverflow = "";
 const mousewheelEventName = isFirefox() ? "DOMMouseScroll" : "mousewheel";
 
 const emit = defineEmits<{
-  (e: "closeImgWrapper", value: boolean): void;
+  (e: "update:modelValue", value: boolean): void;
 }>();
 
 const props = withDefaults(defineProps<Props>(), {
@@ -411,7 +420,7 @@ function hide() {
   deviceSupportUninstall();
   // 恢复document的overflow样式
   document.body.style.overflow = prevOverflow;
-  emit("closeImgWrapper", false);
+  emit("update:modelValue", false);
   props.onClose();
 }
 /**
@@ -485,13 +494,13 @@ function reset() {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .viewer-fade-enter-active {
-  animation: viewer-fade-in 0.3s;
+  animation: viewer-fade-in 3s;
 }
 
 .viewer-fade-leave-active {
-  animation: viewer-fade-out 0.3s;
+  animation: viewer-fade-out 3s;
 }
 
 @keyframes viewer-fade-in {

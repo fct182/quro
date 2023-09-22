@@ -9,20 +9,28 @@
         @click="imgClickHandler(index)"
       />
     </div>
-    <ImageViewer
+    <!-- <ImageViewer
       v-model="flag"
       :infinite="false"
       :urlList="state.srcList"
       :initialIndex="state.initialIndex"
       :onSwitch="switchHandler"
       :onClose="closeHandler"
-    ></ImageViewer>
+    ></ImageViewer> -->
+    <ImagePreview
+      :initial-index="state.initialIndex"
+      v-if="flag"
+      :on-close="closeHandler"
+      :onSwitch="switchHandler"
+      :url-list="state.srcList"
+    ></ImagePreview>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import ImageViewer from "../../components/ImageViewer/ImageViewer.vue";
+// import ImageViewer from "@/components/ImageViewer/ImageViewer.vue";
+import ImagePreview from "@/components/ImageViewer/ImagePreview.vue";
 
 const flag = ref(false);
 
@@ -48,6 +56,7 @@ function imgClickHandler(index: number) {
  * @Date: 2023/09/21 19:17:11
  */
 function closeHandler() {
+  flag.value = false;
   console.log("预览图片关闭的回调");
 }
 /**
