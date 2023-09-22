@@ -119,6 +119,15 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/ClockView/ClockView.vue"),
     meta: {
       text: "简单时钟", // 菜单名
+      icon: "Clock", // 菜单图标
+    },
+  },
+  {
+    path: "/imageViewer",
+    name: "ImageViewer",
+    component: () => import("../views/ImageViewerDemo/ImageViewerDemo.vue"),
+    meta: {
+      text: "图片预览组件", // 菜单名
       icon: "Picture", // 菜单图标
     },
   },
