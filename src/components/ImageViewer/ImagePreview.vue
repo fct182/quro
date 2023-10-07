@@ -496,11 +496,11 @@ function reset() {
 
 <style scoped lang="scss">
 .viewer-fade-enter-active {
-  animation: viewer-fade-in 3s;
+  animation: viewer-fade-in 0.3s;
 }
 
 .viewer-fade-leave-active {
-  animation: viewer-fade-out 3s;
+  animation: viewer-fade-out 0.3s;
 }
 
 @keyframes viewer-fade-in {
