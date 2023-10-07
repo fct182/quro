@@ -1,3 +1,4 @@
+import type { CSSProperties } from "vue";
 import { typeOf } from "./typeOf";
 
 /**
@@ -107,3 +108,30 @@ export const isEdge = function () {
 export const isFirefox = function () {
   return !!window.navigator.userAgent.match(/firefox/i);
 };
+
+/**
+ * 转换小写
+ * @Date: 2023/09/27 17:42:11
+ * @param key 指定字符串
+ */
+export function toLowercaseSeparator(key: string) {
+  return key.replace(/([A-Z])/g, "-$1").toLowerCase();
+}
+
+/**
+ * 获取样式字符串
+ * @Date: 2023/09/27 17:47:31
+ */
+export function getStyleStr(style: CSSProperties): string {
+  const styleKeys = Object.keys(style);
+  return styleKeys
+    .map((key) => `${toLowercaseSeparator(key)}: ${style[key as any]};`)
+    .join(" ");
+}
+/**
+ * 返回当前显示设备的物理像素分辨率与CSS 像素分辨率之比
+ * @Date: 2023/09/27 17:54:33
+ */
+export function getPixelRatio() {
+  return window.devicePixelRatio || 1;
+}

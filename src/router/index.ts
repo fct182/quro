@@ -131,6 +131,15 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "Picture", // 菜单图标
     },
   },
+  {
+    path: "/WatermarkView",
+    name: "WatermarkView",
+    component: () => import("../views/WatermarkView/WatermarkView.vue"),
+    meta: {
+      text: "水印", // 菜单名
+      icon: "Brush", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({
