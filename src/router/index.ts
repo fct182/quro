@@ -140,6 +140,24 @@ export const routes: Array<RouteRecordRaw> = [
       icon: "Brush", // 菜单图标
     },
   },
+  {
+    path: "/loading",
+    name: "LoadingView",
+    component: () => import("../views/LoadingView/LoadingView.vue"),
+    meta: {
+      text: "Loading加载", // 菜单名
+      icon: "Loading", // 菜单图标
+    },
+  },
+  {
+    path: "/card",
+    name: "CardView",
+    component: () => import("../views/CardView/CardView.vue"),
+    meta: {
+      text: "卡片", // 菜单名
+      icon: "Postcard", // 菜单图标
+    },
+  },
 ];
 
 const router = createRouter({
